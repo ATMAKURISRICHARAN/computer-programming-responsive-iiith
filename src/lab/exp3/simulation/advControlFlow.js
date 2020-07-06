@@ -169,23 +169,53 @@ window.view = {
 		var inputValue = document.getElementById('simpleLoopInput').value
 		if (selected_loop === 'for' && inputValue !== '' && !isNaN(model.inp) )
 		{
+		if(parseInt(inputValue)<=20)
+        {
 			this.displayLoop('forLoopContent', 'codeContentFor1')
+			this.disableButton('btnStart')
+		    this.changeClass( 'btnStart', 'buttonDisable startButton')
+		    this.enableButton('btnNext')
+		    this.changeClass( 'btnNext', 'button nextButton')
+		    this.disableButton('loopList')
+		    this.changeClass( 'loopList', 'buttonDisable loopList')
+		    this.disableButton('simpleLoopInput')
 		}
-		if (selected_loop === 'while' && inputValue !== '' && !isNaN(model.inp))
+		else{
+			alert("factorial range is 0-20 ")
+		}
+	    }
+		if (selected_loop === 'while' && inputValue !== '' && !isNaN(model.inp) )
 		{
+		if(parseInt(inputValue)<=20){
 			this.displayLoop('whileLoopContent', 'codeContentWhile1')
+			this.disableButton('btnStart')
+		    this.changeClass( 'btnStart', 'buttonDisable startButton')
+		    this.enableButton('btnNext')
+		    this.changeClass( 'btnNext', 'button nextButton')
+		    this.disableButton('loopList')
+		    this.changeClass( 'loopList', 'buttonDisable loopList')
+		    this.disableButton('simpleLoopInput')
+		}
+		else{
+			alert("factorial range is 0-20")
+		}
 		}
 		if (selected_loop === 'do-while' && inputValue !== '' && !isNaN(model.inp))
 		{
-		 	this.displayLoop('dowhileLoopContent', 'codeContentDoWhile1')
+		  if(inputValue<=20){
+			 this.displayLoop('dowhileLoopContent', 'codeContentDoWhile1')
+			 this.disableButton('btnStart')
+		     this.changeClass( 'btnStart', 'buttonDisable startButton')
+		     this.enableButton('btnNext')
+		     this.changeClass( 'btnNext', 'button nextButton')
+		     this.disableButton('loopList')
+		     this.changeClass( 'loopList', 'buttonDisable loopList')
+		     this.disableButton('simpleLoopInput')
 		}
-		this.disableButton('btnStart')
-		this.changeClass( 'btnStart', 'buttonDisable startButton')
-		this.enableButton('btnNext')
-		this.changeClass( 'btnNext', 'button nextButton')
-		this.disableButton('loopList')
-		this.changeClass( 'loopList', 'buttonDisable loopList')
-		this.disableButton('simpleLoopInput')
+		else{
+             alert("factorial range is 0-20")
+		}
+		}
 	},
 	updateModelAndShowResult: function() {
 		if( model.inp >= 1)
